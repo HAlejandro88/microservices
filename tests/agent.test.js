@@ -14,9 +14,8 @@ let MetricStub = {
 }
 
 let single = Object.assign({}, agentFixtures.single)
-
+let id = 1
 let AgentStub = null
-
 let db = null
 let sandbox= null
 // sandbox is specific environment for sinon to have to do one test when the finish the test the sandbox restart
@@ -27,6 +26,11 @@ test.beforeEach(async () => {
   AgentStub = {
     hasMany: sandbox.spy()
   }
+
+  // Model findById stub
+  AgentStub.findById = sandbox.stub()
+  AgentStub.findById.withArgs(id).returns(Promise.resolve(agentFixtures.findById(id)))
+
   //const setupDatabase = require('../index') change require for proxyquire
   const setupDatabase = proxyquire('../index', {
     './models/agent': () => AgentStub,
@@ -55,6 +59,10 @@ test.serial('Setup', t => {
 })
 
 test.serial('Agent find By Id', async t => {
-  let agent = await db.Agent.findById(1)
-  t.deepEqual(agent, agentFixtures.findById(1), 'should be the same')
+  let agent = await db.Agent.findById(id)
+
+  t.true(AgentStub.findById.called, 'findById should be called on model')
+  t.true(AgentStub.findById.calledOnce, 'findById should be called once')
+  t.true(AgentStub.findById.calledWith(id), 'findById should be called with argument 1')
+  t.deepEqual(agent, agentFixtures.findById(id), 'should be the same')
 })
