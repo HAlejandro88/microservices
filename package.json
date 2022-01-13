@@ -35,5 +35,17 @@
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.13.0"
-  }
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HAlejandro88/microservices.git"
+  },
+  "bugs": {
+    "url": "https://github.com/HAlejandro88/microservices/issues"
+  },
+  "homepage": "https://github.com/HAlejandro88/microservices#readme"
 }
