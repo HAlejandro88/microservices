@@ -2,7 +2,7 @@
 
 const agent = {
   id: 1,
-  uuid: 'yyy-yyy-yy',
+  uuid: 'yyy-yyy-yyy',
   name: 'fixture',
   username: 'test',
   hostname: 'test-host',
@@ -15,8 +15,8 @@ const agent = {
 const agents = [
   agent,
   { id: 2, uuid: 'yyy-yyy-yyx', name: 'fixture2', ...agent },
-  { id: 3, uuid: 'yyy-yyy-yyx', name: 'fixture3', username: 'testing', ...agent},
-  { id: 4, uuid: 'www-www-ww', name: 'fixture5',  connected: false, ...agent}
+  { id: 3, uuid: 'yyy-yyy-yyx', name: 'fixture3', username: 'testing', ...agent },
+  { id: 4, uuid: 'www-www-ww', name: 'fixture5', connected: false, ...agent }
 ]
 
 const extend = (obj, values) => {

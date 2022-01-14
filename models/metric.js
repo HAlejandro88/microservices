@@ -6,13 +6,13 @@ const setUpDatabase = require('../lib/db')
 const setupMetricModel = (config) => {
   const sequelize = setUpDatabase(config)
 
-  return sequelize.define('agent', {
+  return sequelize.define('metric', {
     type: {
       type: Sequelize.STRING,
       allowNull: false
     },
     value: {
-      type: Sequelize.TEXT,
+      type: Sequelize.STRING,
       allowNull: false
     }
   })
